@@ -1,5 +1,5 @@
 const Product = require('../models/productModel');
-
+// Create a new product
 exports.createProduct = async (req, res) => {
   try {
     const { name, quantity } = req.body;
@@ -11,7 +11,7 @@ exports.createProduct = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
+// List all products
 exports.listProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -20,7 +20,7 @@ exports.listProducts = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
+// Delete a product by ID
 exports.deleteProduct = async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
@@ -29,7 +29,7 @@ exports.deleteProduct = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
+// Update the quantity of a product by ID
 exports.updateQuantity = async (req, res) => {
   try {
     const { number } = req.query;
